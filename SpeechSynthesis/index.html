@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speech Synthesis</title>
+    <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css" />
+  </head>
+  <body>
+    <h1>Web Speech Demo</h1>
+
+    Text
+    <input type="text" id="text" value="Halo Adrian" /> <br />
+
+    Pitch
+    <input type="range" min="0.1" max="2" value="1" step="0.1" id="pitch" /> <br />
+
+    Rate
+    <input type="range" min="0.5" max="2" value="1" step="0.1" id="rate" /> <br />
+
+    <button id="play" onclick="play()">Play</button>
+
+    <script>
+      if (!'speechSynthesis' in window) {
+        alert('speech synth not supported!');
+      }
+      let synth = window.speechSynthesis;
+      //   let voices = [];
+
+      //   setTimeout(() => {
+      //     voices = synth.getVoices();
+      //     console.log(voices);
+      //   }, 500);
+
+      function play() {
+        let text = document.getElementById('text').value;
+        let utterance = new SpeechSynthesisUtterance(text);
+
+        utterance.lang = 'id-ID';
+        utterance.rate = document.getElementById('rate').value;
+        utterance.pitch = document.getElementById('pitch').value;
+        // utterance.voice = voices[3];
+        synth.speak(utterance);
+      }
+    </script>
+  </body>
+</html>
