@@ -1,4 +1,4 @@
 # web-speech-api
-Program Speech Recognition
+Program Speech Recognition & Speech Synthesis
 # Web Speech Demo 
-- On Development..
+- Development #1
